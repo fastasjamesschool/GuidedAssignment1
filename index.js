@@ -1,6 +1,7 @@
 let characters = [];
 let matchingCharacters = [];
-const charactersList = document.querySelector("#charactersList")
+const charactersList = document.querySelector("#charactersList");
+
 
 document.addEventListener('DOMContentLoaded', getCharacters)
 
