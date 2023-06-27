@@ -16,15 +16,13 @@ addEventListener('DOMContentLoaded', () => {
     getPlanet(id)
 });
 
+// Get planet and get attributes
 async function getPlanet(id) {
     let planet;
     try {
-      planet = await fetchPlanet(id)
+      planet = await fetchPlanet(id);
       planet.characters = await fetchCharacters(planet); 
-      planet.films = await fetchFilms(planet) 
-      console.log(planet)
-      console.log(planet.characters)
-      console.log(planet.films)
+      planet.films = await fetchFilms(planet);
     }
     catch (ex) {
       console.error(`Error reading planet ${id} data.`, ex.message);
@@ -53,6 +51,7 @@ async function fetchFilms(planet) {
 }
 
 const renderPlanet = planet => {
+    // render the generic details
     document.title = `SWAPI - ${planet?.name}`;  // Just to make the browser tab say their name
     nameH1.textContent = planet?.name;
     climate.textContent = planet?.climate;
@@ -61,6 +60,8 @@ const renderPlanet = planet => {
     surface_water.textContent = planet?.surface_water;
     terrain.textContent = planet?.terrain;
     population.textContent = planet?.population;
+    
+    // create lists for people and characters
     const charsLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
     charactersUl.innerHTML = charsLis.join("");
     const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
