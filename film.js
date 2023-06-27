@@ -25,10 +25,7 @@ addEventListener('DOMContentLoaded', () => {
     let film;
     try {
       film = await fetchFilm(id)
-      console.error("Through #1")
       film.characters = await fetchCharacters(id)
-      console.error("Through #2")
-      console.log("test");
       film.planets = await fetchPlanets(id)
     }
     catch (ex) {
