@@ -5,6 +5,7 @@ const charactersList = document.querySelector("#charactersList");
 films = JSON.stringify([]);
 localStorage.setItem('films', films);
 
+let chararray = []
 chars = JSON.stringify(chararray);
 localStorage.setItem('characters', chars);
 
