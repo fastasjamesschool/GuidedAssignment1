@@ -6,7 +6,10 @@ addEventListener('DOMContentLoaded', () => {
     climate = document.querySelector('span#climate');
     gravity = document.querySelector('span#gravity');
     diameter = document.querySelector('span#diameter');
-    //TODO: add query for list tags
+    surface_water = document.querySelector('span#surface_water');
+    terrain = document.querySelector('span#terrain');
+    population = document.querySelector('span#population');
+    charactersUl = document.querySelector('#characters>ul');
     filmsUl = document.querySelector('#films>ul');
     const sp = new URLSearchParams(window.location.search)
     const id = sp.get('id')
@@ -17,9 +20,10 @@ async function getPlanet(id) {
     let planet;
     try {
       planet = await fetchPlanet(id)
-      //planet.characters = 
+      planet.characters = await fetchCharacters(planet); 
       planet.films = await fetchFilms(planet) 
       console.log(planet)
+      console.log(planet.characters)
       console.log(planet.films)
     }
     catch (ex) {
@@ -32,6 +36,13 @@ async function fetchPlanet(id) {
     let planetUrl = `${baseUrl}/planets/${id}`;
     return await fetch(planetUrl)
       .then(res => res.json())
+}
+
+async function fetchCharacters(planet) {
+    const url = `${baseUrl}/planets/${planet?.id}/characters`;
+    const characters = await fetch(url)
+      .then(res => res.json())
+    return characters;
 }
 
 async function fetchFilms(planet) {
@@ -47,7 +58,11 @@ const renderPlanet = planet => {
     climate.textContent = planet?.climate;
     gravity.textContent = planet?.gravity;
     diameter.textContent = planet?.diameter;
-    //homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
+    surface_water.textContent = planet?.surface_water;
+    terrain.textContent = planet?.terrain;
+    population.textContent = planet?.population;
+    const charsLis = planet?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
+    charactersUl.innerHTML = charsLis.join("");
     const filmsLis = planet?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
     filmsUl.innerHTML = filmsLis.join("");
 }
