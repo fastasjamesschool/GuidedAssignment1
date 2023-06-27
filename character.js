@@ -17,15 +17,6 @@ addEventListener('DOMContentLoaded', () => {
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
   
-  char_array = localStorage.getItem('characters');
-  char_array_parsed = JSON.parse(char_array);
-  
-  if (typeof char_array_parsed[id] === 'undefined') {
-    console.log("not there");
-  } else {
-    console.log(char_array_parsed[id]);
-  }
-
   getCharacter(id)
 });
 
