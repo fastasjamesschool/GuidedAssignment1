@@ -2,14 +2,14 @@ let characters = [];
 let matchingCharacters = [];
 const charactersList = document.querySelector("#charactersList");
 
-films = JSON.stringify([])
-localStorage.setItem('films', films)
+films = JSON.stringify([]);
+localStorage.setItem('films', films);
 
-chars = JSON.stringify([])
-localStorage.setItem('characters', chars)
+chars = JSON.stringify(chararray);
+localStorage.setItem('characters', chars);
 
-planets = JSON.stringify([])
-localStorage.setItem('planets', planets)
+planets = JSON.stringify([]);
+localStorage.setItem('planets', planets);
 
 document.addEventListener('DOMContentLoaded', getCharacters)
 
