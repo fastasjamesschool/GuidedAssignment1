@@ -63,7 +63,7 @@ addEventListener('DOMContentLoaded', () => {
     release_dateSp.textContent = film?.release_date;
     opening_crawlSp.textContent = film?.opening_crawl;
     const charactersList = film?.characters?.map(character => `<li><a href="/character.html?id=${character.id}">${character.name}</li>`)
-    characters.innerHTML = charactersList.join("");
+    charactersUl.innerHTML = charactersList.join("");
     const planetsList = film?.planets?.map(planet => `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`)
     planetsUl.innerHTML = planetsList.join("");
   }
