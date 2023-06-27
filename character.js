@@ -16,6 +16,10 @@ addEventListener('DOMContentLoaded', () => {
   filmsUl = document.querySelector('#films>ul');
   const sp = new URLSearchParams(window.location.search)
   const id = sp.get('id')
+  
+  char_array = localStorage.getItem('characters');
+  char_array_parsed = JSON.parse(char_array);
+    
   getCharacter(id)
 });
 
