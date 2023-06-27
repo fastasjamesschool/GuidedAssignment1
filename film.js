@@ -57,7 +57,7 @@ addEventListener('DOMContentLoaded', () => {
   }
   const renderFilm = film => {
     document.title = `SWAPI - ${film?.title}`;  // Just to make the browser tab say their name
-    film_nameH1.textContent = film?.name;
+    film_nameH1.textContent = film?.title;
     episode_idSp.textContent = film?.episode_id;
     directorSp.textContent = film?.director;
     release_dateSp.textContent = film?.release_date;
